@@ -19,5 +19,5 @@ days_between_features['patent_id'] = days_between_features['patent_id'].astype(s
 
 patent_data_preds = all_description_features_df.merge(days_between_features, on="patent_id", how="inner")
 model = load("patent_GBC.joblib")
-patent_data_preds['good_claim_probability'] = model.predict_proba(patent_data.iloc[:,1:])[:,1]
+patent_data_preds['good_claim_probability'] = model.predict_proba(patent_data_preds.iloc[:,1:])[:,1]
 patent_data_preds.to_csv("patent_data_preds.csv")
